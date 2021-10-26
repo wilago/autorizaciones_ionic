@@ -1,0 +1,9 @@
+{
+  "name": "kinesis01",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "ff94562f"
+}

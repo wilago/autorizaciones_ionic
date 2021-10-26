@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="dark" >
+    
+    <ion-title>Token</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio/{{usr}}" ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+<div style="padding-bottom: 200px;"></div>
+<form #formulario="ngForm" (ngSubmit)="onSubmitToken()" >
+<ion-item >
+  
+  <ion-input placeholder="Ingrese el Token"  type="number" (keyup.enter)="onSubmitToken()" name="token"  
+              [(ngModel)]="tokenForm"    
+                    required   style="font-size: 8mm; text-align: center;"></ion-input>
+</ion-item>
+
+
+<ion-button color="dark" expand="full" type="submit"
+                [disabled]="formulario.invalid">
+      Enviar
+    </ion-button>
+</form>
+</ion-content>

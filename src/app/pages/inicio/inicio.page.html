@@ -1,0 +1,81 @@
+<ion-header  class="ion-no-border" [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-button (click)="reloadPage()" fill="clear" color="light" style="padding-right: 20px;" slot="end">
+    <ion-icon slot="end" name="reload-outline"></ion-icon>  
+    </ion-button>
+    <ion-title>
+      Aprobaciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content   [fullscreen]="true">
+
+  <ion-grid  *ngIf="varUndefine; else noDatos">
+    <ion-row *ngFor="let aprobacion of aprobaciones" >
+      <ion-col size="12">
+
+
+      <ion-card>
+        <ion-item color="success">
+          <ion-avatar slot="start">
+            <img [src]="aprobacion.img_pach | imagen">
+          </ion-avatar>
+          <ion-label>{{aprobacion.id}}- {{aprobacion.user}} </ion-label>
+        </ion-item>
+       
+        <ion-card-content>
+           <!-- Multi-line sliding item with icon options on both sides -->
+                    <ion-item-sliding #slidingItem id="item100" >
+                      <ion-item style="border: none;">
+                        <ul style="font-size: 3mm;">
+                          <li><strong>EMPRESA:</strong> {{aprobacion.empresa}}</li>
+                          <li><strong>NOMBRE:</strong> {{aprobacion.nombre}}</li>
+                          <li><strong>FORMATO:</strong> {{aprobacion.tipo_doc}}</li>
+                          <li><strong>DESCRIPCIÓN</strong> {{aprobacion.descripcion}}</li>
+                        </ul>
+                      </ion-item>
+
+                      <ion-item-options side="start">
+                        <ion-item-option (click)="onClickNoAprobar(aprobacion.id , slidingItem)" color="danger">
+                          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+                        </ion-item-option>
+                      </ion-item-options>
+
+                      <ion-item-options side="end">
+                        <ion-item-option (click)="onClickPdf(aprobacion.name_doc)" color="danger">
+                          <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
+                        </ion-item-option>
+                        <ion-item-option (click)="onClickAprobar(aprobacion.id , slidingItem)" color="primary" >
+                          <ion-icon slot="icon-only" name="checkbox-outline"></ion-icon>
+                        </ion-item-option>
+                      </ion-item-options>
+                    </ion-item-sliding>
+        </ion-card-content>
+      </ion-card>
+      <!--
+      <ion-row>
+              <ion-col size="6"><ion-button (click)="onClickAprobar()" expand="block"  color="primary">
+                Aprobar
+              </ion-button></ion-col>
+              <ion-col size="6">
+
+                <ion-button (click)="onClickPdf(aprobacion.name_doc)" expand="block"  color="danger">
+                  Ver Pdf
+                </ion-button>
+
+               </ion-col>
+      </ion-row>  -->
+      </ion-col>
+    </ion-row>
+     
+  </ion-grid>
+      
+ 
+        <ng-template #noDatos> 
+         <div class="text-center">
+        <p style="text-align: center; font-size: 4mm;">No hay Aprobaciones pendientes </p>
+        </div>
+        </ng-template> 
+
+</ion-content>

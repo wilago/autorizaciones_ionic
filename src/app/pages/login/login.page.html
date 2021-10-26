@@ -1,0 +1,63 @@
+
+<ion-content>
+  
+<ion-grid fixed style="padding-top: 30px;">
+  <ion-row>
+    <ion-col size="4"></ion-col>
+    <ion-col size="4"><ion-img style="width: 100px;" src="../assets/logo_kinesis_fondo_white_200x160.png"></ion-img></ion-col>
+    <ion-col size="4"></ion-col>
+  </ion-row>
+</ion-grid>
+  <ion-item lines="none">
+    <ion-label style="font-size: 6mm; text-align: center; color: darkgray; ">App de Aprobaciones</ion-label>
+  </ion-item>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="3"></ion-col>
+      <ion-col size="4"><ion-img style="width: 150px;" src="../assets/imgs/agricolas.png"></ion-img></ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+  <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
+
+    <ion-list>
+     <!--
+      <ion-list-header>
+        <ion-label style="font-size: small;">Formulatio template: Valido {{ formulario.valid }} </ion-label>
+      </ion-list-header>
+      -->
+      <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email"
+                    name="email"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                    [(ngModel)]="usuario.email"
+                    required>
+          </ion-input>
+      </ion-item>
+
+      <ion-item style="padding-bottom: 20px;">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input  type="password" (keyup.enter)="onSubmitTemplate()" 
+                    name="password"
+                    [(ngModel)]="usuario.password"
+                    required>
+          </ion-input>
+      </ion-item>
+
+
+    </ion-list>
+
+    <ion-button color="dark" expand="full" type="submit"
+                [disabled]="formulario.invalid">
+      Enviar
+    </ion-button>
+
+
+  </form>
+
+ 
+</ion-content>
